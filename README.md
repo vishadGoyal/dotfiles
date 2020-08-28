@@ -1,3 +1,7 @@
+# Changes in the fork
+- I have modified some aliases to work well with ubuntu, especially ubuntu mate
+- I have added some useful aliases to git config
+
 # Mathias’s dotfiles
 
 ![Screenshot of my shell prompt](https://i.imgur.com/EkEtphC.png)
