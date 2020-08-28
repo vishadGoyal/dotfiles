@@ -13,14 +13,27 @@
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
 	# Pull in remote changes for the current repository and all its submodules.
-	p = pull --recurse-submodules
+	f = fetch origin
+
+  	m = merge
+
+	pull = pull origin "$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+		git describe --all --exact-match HEAD 2> /dev/null || \
+		git rev-parse --short HEAD 2> /dev/null || \
+		echo '(unknown)')"
+	
+	push = push origin "$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+		git describe --all --exact-match HEAD 2> /dev/null || \
+		git rev-parse --short HEAD 2> /dev/null || \
+		echo '(unknown)')"
 
 	# Clone a repository including all submodules.
 	c = clone --recursive
-
+	
 	# Commit all changes.
-	ca = !git add -A && git commit -av
+	ca = !git add -A && git commit -avS
 
+	cs = commit -S
 	# Switch to a branch, creating it if necessary.
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
@@ -33,7 +46,7 @@
 	aliases = config --get-regexp alias
 
 	# Amend the currently staged files to the latest commit.
-	amend = commit --amend --reuse-message=HEAD
+	amend = commit --amend
 
 	# Credit an author on the latest commit.
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"

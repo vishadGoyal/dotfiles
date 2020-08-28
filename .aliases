@@ -13,12 +13,12 @@ alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/coding/repos"
-alias gcb="git checkout -b"
-alias gch="git checkout"
-alias gs="git status"
-alias gcs="git commit -S"
-alias push="git push origin $(git branch --show-current)"
-alias pull="git pull origin $(git branch --show-current)"
+# alias gcb="git checkout -b"
+# alias gch="git checkout"
+# alias gs="git status"
+# alias gcs="git commit -S"
+# alias push="git push origin $(git branch --show-current)"
+# alias pull="git pull origin $(git branch --show-current)"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
